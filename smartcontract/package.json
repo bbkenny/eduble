@@ -1,0 +1,31 @@
+{
+    "name": "eduble-smartcontract",
+    "version": "1.0.0",
+    "description": "Smart contracts for Eduble student performance tracking platform",
+    "main": "index.js",
+    "scripts": {
+        "test": "hardhat test",
+        "compile": "hardhat compile",
+        "deploy": "hardhat run scripts/deploy.ts",
+        "node": "hardhat node"
+    },
+    "keywords": [
+        "blockchain",
+        "education",
+        "student",
+        "performance",
+        "tracking"
+    ],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+        "@types/node": "^20.0.0",
+        "hardhat": "^2.22.0",
+        "ts-node": "^10.9.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^5.0.0"
+    }
+}
