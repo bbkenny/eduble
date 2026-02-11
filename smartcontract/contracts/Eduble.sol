@@ -2,13 +2,16 @@
 pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /**
  * @title Eduble - Student Performance Tracking System
  * @notice Main contract for managing student records, grades, and performance data
  * @dev Uses role-based access control for teachers, parents, and administrators
+ * @dev Includes Pausable for emergency maintenance and ReentrancyGuard for security
  */
-contract Eduble is AccessControl {
+contract Eduble is AccessControl, Pausable, ReentrancyGuard {
     // Roles
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant TEACHER_ROLE = keccak256("TEACHER_ROLE");
@@ -142,9 +145,10 @@ contract Eduble is AccessControl {
         uint256 _score,
         uint256 _maxScore,
         string memory _term
-    ) external onlyTeacherOrAdmin returns (uint256) {
+    ) external onlyTeacherOrAdmin nonReentrant whenNotPaused returns (uint256) {
         require(students[_studentId].isActive, "Student not found");
         require(_score <= _maxScore, "Score cannot exceed max score");
+        require(_maxScore > 0, "Max score must be greater than 0");
 
         gradeCounter++;
         Grade memory newGrade = Grade({
@@ -239,4 +243,35 @@ contract Eduble is AccessControl {
         }
         return totalPercentage / grades.length;
     }
+
+    // Calculate attendance percentage
+    function getAttendancePercentage(uint256 _studentId) external view returns (uint256) {
+        Attendance[] memory records = studentAttendance[_studentId];
+        if (records.length == 0) return 0;
+
+        uint256 presentCount = 0;
+        for (uint256 i = 0; i < records.length; i++) {
+            if (records[i].present) {
+                presentCount++;
+            }
+        }
+        return (presentCount * 100) / records.length;
+    }
+
+    // Emergency pause function
+    function pauseContract() external onlyRole(ADMIN_ROLE) {
+        _pause();
+    }
+
+    // Resume contract after pause
+    function unpauseContract() external onlyRole(ADMIN_ROLE) {
+        _unpause();
+    }
+
+    // Check if contract is paused
+    function isContractPaused() external view returns (bool) {
+        return paused();
+    }
 }
+
+
