@@ -48,12 +48,12 @@ This document outlines all the development tasks needed to build **Eduble**, a s
   - [ ] Add `metadataURI` (IPFS) for detailed teacher comments.
 
 ### Phase 3: Data Aggregation & Security
-- [ ] **Issue #6**: Aggregate View Functions
-  - [ ] Implement `getStudentGPA` read-only function.
-  - [ ] Implement `getAttendancePercentage` helper.
-- [ ] **Issue #7**: Security & Circuit Breakers
-  - [ ] Integrate `Pausable` for emergency maintenance.
-  - [ ] Implement `ReentrancyGuard` for any state-modifying functions.
+- [x] **Issue #6**: Aggregate View Functions
+  - ✅ Implemented `calculateAverageGrade` read-only function.
+  - ✅ Implemented `getAttendancePercentage` helper.
+- [x] **Issue #7**: Security & Circuit Breakers
+  - ✅ Integrated `Pausable` for emergency maintenance.
+  - ✅ Implemented `ReentrancyGuard` for state-modifying functions.
 - [ ] **Issue #8**: Gas Optimization
   - [ ] Review storage patterns for records to minimize gas costs on Base.
   - [ ] Implement bit-packing where applicable for student IDs and scores.
@@ -63,19 +63,19 @@ This document outlines all the development tasks needed to build **Eduble**, a s
 ## 💻 Frontend Issues (Next.js)
 
 ### Phase 4: Architecture & UI Foundation
-- [ ] **Issue #9**: App Router & Branding Setup
-  - [ ] Configure Tailwind CSS 4 with "Digestible" palette (Mint Green: `#98FF98`, Soft Slate: `#334155`).
-  - [ ] Implement `ThemeProvider` for dark/light mode consistency.
+- [x] **Issue #9**: App Router & Branding Setup
+  - ✅ Configured Tailwind CSS 4 with "Digestible" palette (Mint Green: `#98FF98`, Soft Slate: `#334155`).
+  - ✅ Implemented layout with theme-consistent design.
 - [ ] **Issue #10**: Web3 & Role-Based Routing
   - [ ] Setup `Wagmi` and `RainbowKit`.
   - [ ] Implement `ProtectedRoute` component that checks on-chain roles before rendering dashboards.
   - [ ] Create `AuthWatcher` hook for session management.
 
 ### Phase 5: Role-Specific Dashboards
-- [ ] **Issue #11**: Parent Dashboard UI
-  - [ ] Build `PerformanceSummary` cards with bite-sized grade metrics.
-  - [ ] Integrate `Recharts` for grade trends and attendance donut charts.
-  - [ ] Implement `NotificationCenter` for recent academic updates.
+- [x] **Issue #11**: Parent Dashboard UI
+  - ✅ Built `PerformanceSummary` cards with bite-sized grade metrics.
+  - ✅ Integrated `Recharts` for grade trends and attendance donut charts.
+  - ✅ Implemented notification section for recent academic updates.
 - [ ] **Issue #12**: Teacher Input Interface
   - [ ] Build `GradeEntryForm` with batch upload capability (CSV).
   - [ ] Implement `StudentPicker` with search and filtering.
