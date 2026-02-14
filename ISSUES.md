@@ -7,6 +7,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
 ## 🏗️ Workflow Overviews
 
 ### 1. Academic Performance Lifecycle
+
 1. **School Onboarding**: School admin registers the school on-chain and assigns teacher roles.
 2. **Student Enrollment**: Teachers or admins enroll students (on-chain IDs) and link them to parental addresses.
 3. **Data Entry**: Teachers log grades, attendance, and behavior reports.
@@ -14,6 +15,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
 5. **Parental Insight**: Parents view real-time visual dashboards and receive on-chain/push notifications.
 
 ### 2. Access Control Lifecycle
+
 1. **Admin Role**: Full control over school registration and role assignment.
 2. **Teacher Role**: Ability to input data for assigned classes/students.
 3. **Parent Role**: Read-only access to their specific child's data.
@@ -24,6 +26,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
 ## 🛠️ Smart Contract Issues (Solidity)
 
 ### Phase 1: Infrastructure & RBAC
+
 - [ ] **Issue #1**: Hardhat Project Initialization
   - [ ] Configure `hardhat.config.ts` for Base Sepolia/Mainnet.
   - [ ] Implement `.env` management and provider setup.
@@ -34,6 +37,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
   - [ ] Implement `grantRole` and `revokeRole` with proper event emission.
 
 ### Phase 2: Core Academic Logic
+
 - [ ] **Issue #3**: School & Student Registry
   - [ ] Define `Student` struct: `id`, `name`, `parentAddress`, `active`.
   - [ ] Implement `registerStudent` function (Admin only).
@@ -48,6 +52,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
   - [ ] Add `metadataURI` (IPFS) for detailed teacher comments.
 
 ### Phase 3: Data Aggregation & Security
+
 - [x] **Issue #6**: Aggregate View Functions
   - ✅ Implemented `calculateAverageGrade` read-only function.
   - ✅ Implemented `getAttendancePercentage` helper.
@@ -63,6 +68,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
 ## 💻 Frontend Issues (Next.js)
 
 ### Phase 4: Architecture & UI Foundation
+
 - [x] **Issue #9**: App Router & Branding Setup
   - ✅ Configured Tailwind CSS 4 with "Digestible" palette (Mint Green: `#98FF98`, Soft Slate: `#334155`).
   - ✅ Implemented layout with theme-consistent design.
@@ -72,6 +78,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
   - [ ] Create `AuthWatcher` hook for session management.
 
 ### Phase 5: Role-Specific Dashboards
+
 - [x] **Issue #11**: Parent Dashboard UI
   - ✅ Built `PerformanceSummary` cards with bite-sized grade metrics.
   - ✅ Integrated `Recharts` for grade trends and attendance donut charts.
@@ -85,6 +92,7 @@ This document outlines all the development tasks needed to build **Eduble**, a s
   - [ ] Build `GoalTracker` for setting target grades.
 
 ### Phase 6: Integration & Polish
+
 - [ ] **Issue #14**: Real-time Data Sync
   - [ ] Implement `useStudentData` hook fetching from the smart contract.
   - [ ] Add `SkeletonLoaders` for charts and lists.
