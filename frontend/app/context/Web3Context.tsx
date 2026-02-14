@@ -16,7 +16,9 @@ const Web3Context = createContext<Web3ContextType | undefined>(undefined);
 export function Web3Provider({ children }: { children: React.ReactNode }) {
   const [isConnected, setIsConnected] = useState(false);
   const [address, setAddress] = useState<string | null>(null);
-  const [userRole, setUserRole] = useState<"parent" | "teacher" | "student" | null>(null);
+  const [userRole, setUserRole] = useState<
+    "parent" | "teacher" | "student" | null
+  >(null);
 
   const truncateAddress = (addr: string): string => {
     if (!addr) return "";
@@ -41,7 +43,14 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
 
   return (
     <Web3Context.Provider
-      value={{ isConnected, address, userRole, connectWallet, disconnectWallet, truncateAddress }}
+      value={{
+        isConnected,
+        address,
+        userRole,
+        connectWallet,
+        disconnectWallet,
+        truncateAddress,
+      }}
     >
       {children}
     </Web3Context.Provider>

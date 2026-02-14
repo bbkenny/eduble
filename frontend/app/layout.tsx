@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Web3Provider } from "./context/Web3Context";
 
 export const metadata: Metadata = {
   title: "Eduble | Student Performance Tracking",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-eduble-light text-eduble-slate">
+        <Web3Provider>{children}</Web3Provider>
       </body>
     </html>
   );
